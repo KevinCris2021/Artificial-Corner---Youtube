@@ -1,0 +1,51 @@
+# Installing Kaggle Package
+!pip install -q kaggle
+# Generado desde la página de Kaggle
+api_token = {"username":"usuario",
+             "key":"codigo"}
+!rm -rf /root/.kaggle. 
+!rm -rf /root/.kaggle. 
+import json
+with open('/root/.kaggle/kaggle.json','w') as file:
+    json.dump(api_token,file)
+!kaggle datasets list
+!chmod 600 /root/.kaggle/kaggle.json
+!kaggle datasets download -d datascientistanna/customers-dataset
+
+import pandas as pd
+data = pd.read_csv('/content/customers-dataset.zip')
+data.head()
+
+# En el caso que necesitarmos leer los archivos que hay dentro del archivo zip
+
+import zipfile
+
+archivo_zip = "/content/customers-dataset.zip"
+
+with zipfile.ZipFile(archivo_zip,'r') as zip_file:
+
+  for nombre_archivo in zip_file.namelist():
+
+    print(nombre_archivo)
+    
+!kaggle datasets download -d prahalmendon/airbnb-booking-analysis
+
+archivo_zip = "/content/airbnb-booking-analysis.zip"
+
+with zipfile.ZipFile(archivo_zip,'r') as zip_file:
+
+    for nombre_archivo in zip_file.namelist():
+
+      print(nombre_archivo)
+
+archivo_zip = '/content/airbnb-booking-analysis.zip'
+
+nombre_archivo_csv = 'Airbnb.csv'
+
+with zipfile.ZipFile(archivo_zip,'r') as zip_file:
+
+  with zip_file.open(nombre_archivo_csv) as archivo_csv:
+   
+    dataframe_csv = pd.read_csv(archivo_csv)
+    
+dataframe_csv.head()
